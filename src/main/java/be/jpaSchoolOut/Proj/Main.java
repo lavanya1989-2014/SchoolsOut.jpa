@@ -1,14 +1,32 @@
 package be.jpaSchoolOut.Proj;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+
+import java.sql.SQLException;
 
 public class Main {
 
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
-    EntityManager entityManager = entityManagerFactory.createEntityManager();
-    EntityTransaction entityTransaction = entityManager.getTransaction();
+    public static void main(String[] args) {
+
+        public static void main(String[] args) throws SQLException {
+            int mainChoice;
+            int subChoice = -1;
+
+
+            do {
+                showMenu();
+                mainChoice = requestIntInput(0, 3);
+
+                if (mainChoice != 0) {
+                    showSubMenu(mainChoice);
+                    subChoice = requestIntInput(0, 10);
+
+                    handleUserChoice(mainChoice, subChoice);
+                }
+            } while (mainChoice != 0 && subChoice != 0);
+        }
+
+    }
+
+
 
 }

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Exam {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String description;
