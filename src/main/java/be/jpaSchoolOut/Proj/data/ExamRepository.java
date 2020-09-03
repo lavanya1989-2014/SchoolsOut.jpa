@@ -61,7 +61,7 @@ public class ExamRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            exam = entityManager.find(exam.getClass(),id);
+            exam = entityManager.find(Exam.class,id);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {

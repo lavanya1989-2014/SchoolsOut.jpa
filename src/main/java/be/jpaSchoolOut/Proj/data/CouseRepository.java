@@ -61,7 +61,7 @@ public class CouseRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            couse = entityManager.find(couse.getClass(),id);
+            couse = entityManager.find(Couse.class,id);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {

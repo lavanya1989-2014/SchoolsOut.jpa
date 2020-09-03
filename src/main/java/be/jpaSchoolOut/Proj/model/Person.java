@@ -6,13 +6,10 @@ import javax.persistence.*;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String firstname;
     private String familyname;
-
-    @OneToOne(mappedBy = "person")
-    private User user;
 
     @ManyToOne
     @JoinColumn(name = "courseid_FK")
@@ -20,15 +17,6 @@ public class Person {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Integer getId() {
         return id;

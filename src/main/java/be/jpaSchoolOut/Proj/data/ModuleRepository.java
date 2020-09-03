@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
+import be.jpaSchoolOut.Proj.model.Module;
 
 public class ModuleRepository {
 
@@ -60,7 +61,7 @@ public class ModuleRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            module = entityManager.find(module.getClass(),id);
+            module = entityManager.find(Module.class,id);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {

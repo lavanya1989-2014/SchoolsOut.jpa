@@ -59,7 +59,7 @@ public class PersonRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            person = entityManager.find(person.getClass(),id);
+            person = entityManager.find(Person.class,id);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {

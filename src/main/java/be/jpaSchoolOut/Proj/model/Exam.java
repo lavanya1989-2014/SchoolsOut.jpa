@@ -10,6 +10,8 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+
+    @Lob
     private String description;
     private LocalDate date;
     private int weight;

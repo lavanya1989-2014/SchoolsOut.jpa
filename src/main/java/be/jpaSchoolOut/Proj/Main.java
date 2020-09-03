@@ -1,10 +1,8 @@
 package be.jpaSchoolOut.Proj;
 
 
-import be.jpaSchoolOut.Proj.model.Couse;
-import be.jpaSchoolOut.Proj.model.Exam;
-import be.jpaSchoolOut.Proj.model.Person;
-import be.jpaSchoolOut.Proj.model.User;
+import be.jpaSchoolOut.Proj.model.*;
+import be.jpaSchoolOut.Proj.model.Module;
 import be.jpaSchoolOut.Proj.services.*;
 
 import java.sql.SQLException;
@@ -16,8 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        public static void main(String[] args) throws SQLException {
-            int mainChoice;
+
+           /* int mainChoice;
             int subChoice = -1;
 
 
@@ -105,7 +103,30 @@ public class Main {
 
 
 
-                }
+                }*/
+
+            UserService userService = new UserService();
+            PersonService personService = new PersonService();
+            ModuleService moduleService = new ModuleService();
+            ExamService examService = new ExamService();
+            CouseService couseService = new CouseService();
+            User user= new User();
+            Person person= new Person();
+           Module module = new Module();
+            Exam exam = new Exam();
+            Couse couse = new Couse();
+
+            person.setGender(Gender.FEMALE);
+            person.setFamilyname("Chireddy");
+            person.setFirstname("Lavanya");
+
+            user.setLogin("LavanyaC");
+            user.setActive(true);
+            user.setPasswaordhash("Intec-123");
+            user.setPerson(person);
+
+            userService.createUser(user);
+
 
         }
 
@@ -113,4 +134,4 @@ public class Main {
 
 
 
-}
+

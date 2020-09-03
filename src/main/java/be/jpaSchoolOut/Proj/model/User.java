@@ -2,10 +2,7 @@ package be.jpaSchoolOut.Proj.model;
 
 import be.jpaSchoolOut.Proj.model.Person;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -14,8 +11,7 @@ public class User {
     private String login;
     private String passwaordhash;
     private boolean active;
-    @OneToOne
-    @JoinColumn (name = "personid_FK")
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Person person;
 
     public String getLogin() {

@@ -10,19 +10,19 @@ public class ModuleService {
     ModuleRepository moduleRepository = new ModuleRepository();
     Module module = new Module();
 
-    public void createModule(java.lang.Module module)
+    public void createModule(Module module)
     {
         moduleRepository.createModule(module);
     }
 
-    public void updateModule(java.lang.Module module)
+    public void updateModule(Module module)
     {
         moduleRepository.updateModule(module);
     }
 
-    public java.lang.Module getModulebyId(long id)
+    public Module getModulebyId(long id)
     {
-        return  moduleRepository.getModulebyId(id);
+        return moduleRepository.getModulebyId(id);
     }
 
     public void delModule(long id)
@@ -30,7 +30,7 @@ public class ModuleService {
         moduleRepository.delModule(id);
     }
 
-    public List<java.lang.Module> getAllModules()
+    public List<Module> getAllModules()
     {
         return moduleRepository.getAllModules();
     }

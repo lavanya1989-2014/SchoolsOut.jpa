@@ -14,25 +14,17 @@ public class Couse {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+
+    @Lob
     private String description;
     private String code;
     private String imageURL;
     private boolean active;
 
-    @OneToMany(mappedBy = "course")
-    private Person person;
 
-    @OneToMany(mappedBy = "course")
-    @JoinColumn (name = "moduleid_FK")
+    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private List<Module> modules = new ArrayList<Module> ();
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
     public long getId() {
         return id;

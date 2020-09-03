@@ -11,14 +11,14 @@ public class Module {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+
+    @Lob
     private  String descrition;
 
     @ManyToOne
-    @JoinColumn (name = "courseid_FK")
     private Couse course;
 
     @OneToMany(mappedBy = "module")
-    @JoinColumn (name = "examid_FK")
     private List<Exam> exams = new ArrayList<Exam>();
 
 

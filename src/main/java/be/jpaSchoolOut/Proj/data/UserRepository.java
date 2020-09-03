@@ -60,7 +60,7 @@ public class UserRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            user = entityManager.find(user.getClass(),loginname);
+            user = entityManager.find(User.class,loginname);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
