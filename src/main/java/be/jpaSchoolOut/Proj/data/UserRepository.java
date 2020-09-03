@@ -51,7 +51,7 @@ public class UserRepository {
 
     }
 
-    public User getUserbyId(long id)
+    public User getUserbyloginname(String loginname)
     {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -60,7 +60,7 @@ public class UserRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            user = entityManager.find(user.getClass(),id);
+            user = entityManager.find(user.getClass(),loginname);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -71,7 +71,7 @@ public class UserRepository {
          return user;
     }
 
-    public void delUser(long id)
+    public void delUser(String loginname)
     {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -80,7 +80,7 @@ public class UserRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            user = entityManager.find(user.getClass(),id);
+            user = entityManager.find(user.getClass(),loginname);
             entityManager.remove(user);
             entityManager.getTransaction().commit();
         }
