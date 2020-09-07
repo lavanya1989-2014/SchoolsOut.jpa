@@ -13,13 +13,14 @@ public class UserRepository {
     public void createUser(User user)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             entityManager.persist(user);
+           // entityManager.persist();
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -33,7 +34,7 @@ public class UserRepository {
     public void updateUser(User user)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
@@ -51,9 +52,9 @@ public class UserRepository {
 
     }
 
-    public User getUserbyloginname(String loginname)
+   /* public User getUserbyloginname(String loginname)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         User user = null;
@@ -69,11 +70,11 @@ public class UserRepository {
             throw e;
         }
          return user;
-    }
+    }*/
 
     public void delUser(String loginname)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         User user = null;
@@ -92,16 +93,18 @@ public class UserRepository {
 
     }
 
-    public List<User> getAllUsers()
+   public List<User> getAllUsers()
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         List<User> user = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            user = (List<User>) entityManager.createQuery("SELECT * FROM USER");
+           // user = (List<User>) entityManager.createQuery("SELECT a FROM User a");
+           user = entityManager.createQuery("from User",User.class).getResultList();
+           entityManager.persist(user);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {

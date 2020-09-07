@@ -20,19 +20,19 @@ public class ModuleService {
         moduleRepository.updateModule(module);
     }
 
-    public Module getModulebyId(long id)
+    /*public Module getModulebyId(long id)
     {
         return moduleRepository.getModulebyId(id);
-    }
+    }*/
 
     public void delModule(long id)
     {
         moduleRepository.delModule(id);
     }
 
-    public List<Module> getAllModules()
+    /*public List<Module> getAllModules()
     {
         return moduleRepository.getAllModules();
-    }
+    }*/
 
 }

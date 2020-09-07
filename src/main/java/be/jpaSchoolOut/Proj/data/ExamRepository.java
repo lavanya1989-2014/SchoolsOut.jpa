@@ -14,7 +14,7 @@ public class ExamRepository {
     public void createExam(Exam exam)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
@@ -34,7 +34,7 @@ public class ExamRepository {
     public void updateExam(Exam exam)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
@@ -52,9 +52,9 @@ public class ExamRepository {
 
     }
 
-    public Exam getExambyId(long id)
+    /*public Exam getExambyId(long id)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         Exam exam = null;
@@ -70,11 +70,11 @@ public class ExamRepository {
             throw e;
         }
         return exam;
-    }
+    }*/
 
     public void delExam(long id)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         Exam exam = null;
@@ -93,16 +93,16 @@ public class ExamRepository {
 
     }
 
-    public List<Exam> getAllExams()
+    /*public List<Exam> getAllExams()
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         List<Exam> exams = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            exams = (List<Exam>) entityManager.createQuery("SELECT * FROM USER");
+            exams = (List<Exam>) entityManager.createQuery("SELECT * FROM EXAM");
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -111,7 +111,7 @@ public class ExamRepository {
             throw e;
         }
         return exams;
-    }
+    }*/
 
 
 }

@@ -20,18 +20,18 @@ public class PersonService {
         personRepository.updatePerson(person);
     }
 
-    public Person getPersonbyId(long id)
+    /*public Person getPersonbyId(long id)
     {
         return personRepository.getPersonbyId(id);
-    }
+    }*/
 
     public void delPerson(long id)
     {
         personRepository.delPerson(id);
     }
 
-    public List<Person> getAllPersons()
+    /*public List<Person> getAllPersons()
     {
         return personRepository.getAllPersons();
-    }
+    }*/
 }

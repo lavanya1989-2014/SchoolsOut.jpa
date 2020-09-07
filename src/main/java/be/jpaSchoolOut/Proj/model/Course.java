@@ -1,14 +1,11 @@
 package be.jpaSchoolOut.Proj.model;
 
-import be.jpaSchoolOut.Proj.model.Module;
-import be.jpaSchoolOut.Proj.model.Person;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Couse {
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +19,21 @@ public class Couse {
     private boolean active;
 
 
-    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL,
+                fetch = FetchType.LAZY)
     private List<Module> modules = new ArrayList<Module> ();
 
+    @ManyToMany (mappedBy = "courseHistory")
+    private List<Person> personsList = new ArrayList<>();
+
+
+    public List<Person> getPersonsList() {
+        return personsList;
+    }
+
+    public void setPersonsList(List<Person> personsList) {
+        this.personsList = personsList;
+    }
 
     public long getId() {
         return id;

@@ -1,17 +1,16 @@
 package be.jpaSchoolOut.Proj.data;
 
-
+import be.jpaSchoolOut.Proj.model.Course;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
-import be.jpaSchoolOut.Proj.model.Module;
 
-public class ModuleRepository {
+public class CourseRepository {
 
-    public void createModule(Module module)
+    public void createCouse(Course couse)
     {
 
         EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
@@ -20,7 +19,7 @@ public class ModuleRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.persist(module);
+            entityManager.persist(couse);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -31,7 +30,7 @@ public class ModuleRepository {
 
     }
 
-    public void updateModule(Module module)
+    public void updateCouse(Course couse)
     {
 
         EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
@@ -40,7 +39,7 @@ public class ModuleRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.merge(module);
+            entityManager.merge(couse);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -52,16 +51,16 @@ public class ModuleRepository {
 
     }
 
-   /* public Module getModulebyId(long id)
+   /* public Course getCousebyId(long id)
     {
         EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
-        Module module = null;
+        Course couse = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            module = entityManager.find(Module.class,id);
+            couse = entityManager.find(Course.class,id);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -69,20 +68,20 @@ public class ModuleRepository {
                 entityTransaction.rollback();
             throw e;
         }
-        return module;
+        return couse;
     }*/
 
-    public void delModule(long id)
+    public void delCouse(long id)
     {
         EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
-        Module module = null;
+        Course couse = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            module= entityManager.find(module.getClass(),id);
-            entityManager.remove(module);
+            couse = entityManager.find(couse.getClass(),id);
+            entityManager.remove(couse);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -93,16 +92,16 @@ public class ModuleRepository {
 
     }
 
-    /*public List<Module> getAllModules()
+    /*public List<Course> getAllCouses()
     {
         EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
-        List<Module> modules = null;
+        List<Course> couses = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            modules = (List<Module>) entityManager.createQuery("SELECT * FROM MODULE");
+            couses = (List<Course>) entityManager.createQuery("SELECT * FROM COURSE");
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -110,8 +109,10 @@ public class ModuleRepository {
                 entityTransaction.rollback();
             throw e;
         }
-        return modules;
+        return couses;
     }*/
+
+
 
 
 }

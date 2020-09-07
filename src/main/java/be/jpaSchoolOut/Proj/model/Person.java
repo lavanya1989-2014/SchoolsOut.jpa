@@ -1,6 +1,8 @@
 package be.jpaSchoolOut.Proj.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Person {
@@ -11,12 +13,31 @@ public class Person {
     private String firstname;
     private String familyname;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "courseid_FK")
-    private Couse course;
+    private Course courseActive;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @ManyToMany
+    private List<Course> courseHistory = new ArrayList<>();
+
+    public Course getCourseActive() {
+        return courseActive;
+    }
+
+    public void setCourseActive(Course courseActive) {
+        this.courseActive = courseActive;
+    }
+
+    public List<Course> getCourseHistory() {
+        return courseHistory;
+    }
+
+    public void setCourseHistory(List<Course> courseHistory) {
+        this.courseHistory = courseHistory;
+    }
 
     public Integer getId() {
         return id;
@@ -42,12 +63,12 @@ public class Person {
         this.familyname = familyname;
     }
 
-    public Couse getCourse() {
-        return course;
+    public Course getCourse() {
+        return courseActive;
     }
 
-    public void setCourse(Couse course) {
-        this.course = course;
+    public void setCourse(Course course) {
+        this.courseActive = course;
     }
 
     public Gender getGender() {

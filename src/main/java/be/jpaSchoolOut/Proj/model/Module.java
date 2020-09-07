@@ -15,10 +15,10 @@ public class Module {
     @Lob
     private  String descrition;
 
-    @ManyToOne
-    private Couse course;
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private Course course;
 
-    @OneToMany(mappedBy = "module")
+    @OneToMany(mappedBy = "module",cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private List<Exam> exams = new ArrayList<Exam>();
 
 
@@ -46,11 +46,11 @@ public class Module {
         this.descrition = descrition;
     }
 
-    public Couse getCourse() {
+    public Course getCourse() {
         return course;
     }
 
-    public void setCourse(Couse course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 

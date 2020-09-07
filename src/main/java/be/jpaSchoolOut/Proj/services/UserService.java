@@ -20,10 +20,10 @@ public class UserService {
         userRepository.updateUser(user);
     }
 
-    public User getUserbyloginname(String logname)
+    /*public User getUserbyloginname(String logname)
     {
         return userRepository.getUserbyloginname(logname);
-    }
+    }*/
 
     public void delUser(String logname) {
         userRepository.delUser(logname);

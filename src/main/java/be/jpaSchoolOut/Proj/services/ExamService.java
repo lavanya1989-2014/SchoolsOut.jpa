@@ -12,6 +12,7 @@ public class ExamService {
 
     public void createExam(Exam exam)
     {
+
         examRepository.createExam(exam);
     }
 
@@ -20,18 +21,22 @@ public class ExamService {
         examRepository.updateExam(exam);
     }
 
-    public Exam getExambyId(long id)
+    /*public Exam getExambyId(long id)
     {
         return examRepository.getExambyId(id);
-    }
+    }*/
 
     public void delExam(long id)
     {
         examRepository.delExam(id);
     }
 
-    public List<Exam> getAllExams()
+    /*public List<Exam> getAllExams()
     {
         return examRepository.getAllExams();
-    }
+    }*/
+
+   /*  public void outputExam(long id) {
+        examRepository.
+    }*/
 }

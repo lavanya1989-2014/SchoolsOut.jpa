@@ -12,7 +12,7 @@ public class PersonRepository {
     public void createPerson(Person person)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
@@ -32,7 +32,7 @@ public class PersonRepository {
     public void updatePerson(Person person)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
@@ -50,9 +50,9 @@ public class PersonRepository {
 
     }
 
-    public Person getPersonbyId(long id)
+   /* public Person getPersonbyId(long id)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         Person person = null;
@@ -68,11 +68,11 @@ public class PersonRepository {
             throw e;
         }
         return person;
-    }
+    }*/
 
     public void delPerson(long id)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
        Person person = null;
@@ -91,16 +91,16 @@ public class PersonRepository {
 
     }
 
-    public List<Person> getAllPersons()
+    /*public List<Person> getAllPersons()
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         List<Person> person = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            person = (List<Person>) entityManager.createQuery("SELECT * FROM USER");
+            person = (List<Person>) entityManager.createQuery("SELECT * FROM PERSON");
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -109,7 +109,7 @@ public class PersonRepository {
             throw e;
         }
         return person;
-    }
+    }*/
 
 
 }

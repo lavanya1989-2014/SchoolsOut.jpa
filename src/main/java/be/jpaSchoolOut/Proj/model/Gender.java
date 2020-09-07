@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 public enum Gender {
 
     FEMALE,
-    MALE
+    MALE,
+    UNDEFINED
 
 }

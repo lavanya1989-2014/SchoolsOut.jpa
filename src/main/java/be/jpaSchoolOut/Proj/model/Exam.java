@@ -2,6 +2,8 @@ package be.jpaSchoolOut.Proj.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Exam {
@@ -17,10 +19,54 @@ public class Exam {
     private int weight;
     private int total;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinColumn (name = "moduleid_FK")
     private Module module;
 
+
+    @ManyToOne (targetEntity = Exam.class,cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @JoinColumn ( name = "subexam_id")
+    private Exam parentExam;
+
+    @OneToMany ( mappedBy = "parentExam",targetEntity = Exam.class,fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    private List<Exam> subExams = new ArrayList<>();
+
+    @OneToMany ( mappedBy = "exam",cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private List<Grade> grade = new ArrayList<>();
+    /*public Exam(long id, String description, Exam parentExam, List<Exam> subExams, Grade grade) {
+        this.id = id;
+        this.description = description;
+        this.parentExam = parentExam;
+        this.subExams = subExams;
+        this.grade = grade;
+    }
+
+    public Exam() {
+    }*/
+
+    public List<Grade> getGrade() {
+        return grade;
+    }
+
+    public void setGrade(List<Grade> grade) {
+        this.grade = grade;
+    }
+
+    public Exam getParentExam() {
+        return parentExam;
+    }
+
+    public void setParentExam(Exam examGroup) {
+        this.parentExam = examGroup;
+    }
+
+    public List<Exam> getSubExams() {
+        return subExams;
+    }
+
+    public void setSubExams(List<Exam> subExams) {
+        this.subExams = subExams;
+    }
 
     public long getId() {
         return id;

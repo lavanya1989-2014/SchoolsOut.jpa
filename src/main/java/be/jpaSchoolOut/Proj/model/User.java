@@ -1,7 +1,5 @@
 package be.jpaSchoolOut.Proj.model;
 
-import be.jpaSchoolOut.Proj.model.Person;
-
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +9,9 @@ public class User {
     private String login;
     private String passwaordhash;
     private boolean active;
-    @OneToOne(cascade = CascadeType.PERSIST)
+
+    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER,targetEntity = Person.class)
+    @JoinColumn(name = "personid_FK")
     private Person person;
 
     public String getLogin() {
@@ -47,5 +47,13 @@ public class User {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", passwaordhash='" + passwaordhash + '\'' +
+                ", active=" + active +
+                ", person=" + person +
+                '}';
+    }
 }

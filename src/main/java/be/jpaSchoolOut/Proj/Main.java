@@ -5,11 +5,6 @@ import be.jpaSchoolOut.Proj.model.*;
 import be.jpaSchoolOut.Proj.model.Module;
 import be.jpaSchoolOut.Proj.services.*;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -107,25 +102,50 @@ public class Main {
 
             UserService userService = new UserService();
             PersonService personService = new PersonService();
-            ModuleService moduleService = new ModuleService();
-            ExamService examService = new ExamService();
-            CouseService couseService = new CouseService();
+            //ModuleService moduleService = new ModuleService();
+            //ExamService examService = new ExamService();
+            //CourseService courseService = new CourseService();
+            
             User user= new User();
-            Person person= new Person();
-           Module module = new Module();
-            Exam exam = new Exam();
-            Couse couse = new Couse();
+            Person person1= new Person();
+            Person person2= new Person();
+            Person person3= new Person();
 
-            person.setGender(Gender.FEMALE);
-            person.setFamilyname("Chireddy");
-            person.setFirstname("Lavanya");
+            person1.setGender(Gender.FEMALE);
+            person1.setFamilyname("Chireddy");
+            person1.setFirstname("Lavanya");
+            personService.createPerson(person1);
 
-            user.setLogin("LavanyaC");
-            user.setActive(true);
-            user.setPasswaordhash("Intec-123");
-            user.setPerson(person);
+        person2.setGender(Gender.FEMALE);
+        person2.setFamilyname("Chireddy");
+        person2.setFirstname("Bhavana");
+        personService.createPerson(person2);
 
-            userService.createUser(user);
+        person3.setGender(Gender.FEMALE);
+        person3.setFamilyname("Lakkireddy");
+        person3.setFirstname("Aswath");
+        personService.createPerson(person3);
+
+        user.setLogin("BhavanaC");
+        user.setActive(true);
+        user.setPasswaordhash("Intec123");
+        user.setPerson(person2);
+        userService.createUser(user);
+
+
+        user.setLogin("AswathL");
+        user.setActive(true);
+        user.setPasswaordhash("Intec123");
+        user.setPerson(person3);
+        userService.createUser(user);
+
+        user.setLogin("LavanyaC");
+        user.setActive(true);
+        user.setPasswaordhash("Intec123");
+        user.setPerson(person1);
+        userService.createUser(user);
+
+        System.out.println(userService.getAllUsers());
 
 
         }

@@ -1,26 +1,25 @@
 package be.jpaSchoolOut.Proj.data;
 
-import be.jpaSchoolOut.Proj.model.Couse;
+import be.jpaSchoolOut.Proj.model.Grade;
 import be.jpaSchoolOut.Proj.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import java.util.List;
 
-public class CouseRepository {
+public class GradeRepository {
 
-    public void createCouse(Couse couse)
+    public void createGrade(Grade grade)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.persist(couse);
+            entityManager.persist(grade);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -31,16 +30,16 @@ public class CouseRepository {
 
     }
 
-    public void updateCouse(Couse couse)
+    public void updateGrade(Grade grade)
     {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.merge(couse);
+            entityManager.merge(grade);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -52,16 +51,16 @@ public class CouseRepository {
 
     }
 
-    public Couse getCousebyId(long id)
+    /*public Grade getGradebyId(long id)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
-        Couse couse = null;
+        Grade grade = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            couse = entityManager.find(Couse.class,id);
+            grade = entityManager.find(Grade.class,id);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -69,20 +68,20 @@ public class CouseRepository {
                 entityTransaction.rollback();
             throw e;
         }
-        return couse;
-    }
+        return grade;
+    }*/
 
-    public void delCouse(long id)
+    public void delGrade(long id)
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
-        Couse couse = null;
+        Grade grade = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            couse = entityManager.find(couse.getClass(),id);
-            entityManager.remove(couse);
+            grade = entityManager.find(grade.getClass(),id);
+            entityManager.remove(grade);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -93,16 +92,16 @@ public class CouseRepository {
 
     }
 
-    public List<Couse> getAllCouses()
+    /*public List<Grade> getAllGrades()
     {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Success");
+        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
-        List<Couse> couses = null;
+        List<Grade> grades= null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            couses = (List<Couse>) entityManager.createQuery("SELECT * FROM USER");
+            grades = (List<Grade>) entityManager.createQuery("SELECT * FROM GRADE");
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -110,10 +109,7 @@ public class CouseRepository {
                 entityTransaction.rollback();
             throw e;
         }
-        return couses;
-    }
-
-
-
+        return grades;
+    }*/
 
 }
