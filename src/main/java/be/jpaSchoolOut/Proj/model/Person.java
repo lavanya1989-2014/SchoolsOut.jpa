@@ -13,7 +13,7 @@ public class Person {
     private String firstname;
     private String familyname;
 
-    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinColumn(name = "courseid_FK")
     private Course courseActive;
 
@@ -77,5 +77,16 @@ public class Person {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", familyname='" + familyname + '\'' +
+                ", courseActive=" + courseActive +
+                ", gender=" + gender +
+                ", courseHistory=" + courseHistory + '}'+'\n';
     }
 }

@@ -25,7 +25,7 @@ public class Exam {
 
 
     @ManyToOne (targetEntity = Exam.class,cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-    @JoinColumn ( name = "subexam_id")
+    @JoinColumn ( name = "Parent_id")
     private Exam parentExam;
 
     @OneToMany ( mappedBy = "parentExam",targetEntity = Exam.class,fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
@@ -33,16 +33,6 @@ public class Exam {
 
     @OneToMany ( mappedBy = "exam",cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private List<Grade> grade = new ArrayList<>();
-    /*public Exam(long id, String description, Exam parentExam, List<Exam> subExams, Grade grade) {
-        this.id = id;
-        this.description = description;
-        this.parentExam = parentExam;
-        this.subExams = subExams;
-        this.grade = grade;
-    }
-
-    public Exam() {
-    }*/
 
     public List<Grade> getGrade() {
         return grade;

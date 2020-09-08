@@ -38,7 +38,7 @@ public class PersonRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.merge(person);
+           // entityManager.persist(person);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -72,7 +72,7 @@ public class PersonRepository {
 
     public void delPerson(long id)
     {
-        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
+        EntityManagerFactory entityManagerFactory =EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
        Person person = null;
@@ -91,7 +91,7 @@ public class PersonRepository {
 
     }
 
-    /*public List<Person> getAllPersons()
+    public List<Person> getAllPersons()
     {
         EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -100,7 +100,7 @@ public class PersonRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            person = (List<Person>) entityManager.createQuery("SELECT * FROM PERSON");
+            person = entityManager.createQuery("from Person",Person.class).getResultList();
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -109,7 +109,7 @@ public class PersonRepository {
             throw e;
         }
         return person;
-    }*/
+    }
 
 
 }

@@ -54,7 +54,7 @@ public class ModuleRepository {
 
    /* public Module getModulebyId(long id)
     {
-        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
+        EntityManagerFactory entityManagerFactory =EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         Module module = null;

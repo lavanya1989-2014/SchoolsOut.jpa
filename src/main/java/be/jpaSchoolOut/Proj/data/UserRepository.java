@@ -1,5 +1,6 @@
 package be.jpaSchoolOut.Proj.data;
 
+import be.jpaSchoolOut.Proj.model.Person;
 import be.jpaSchoolOut.Proj.model.User;
 
 import javax.persistence.EntityManager;
@@ -19,8 +20,7 @@ public class UserRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.persist(user);
-           // entityManager.persist();
+            entityManager.merge(user);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {
@@ -54,7 +54,7 @@ public class UserRepository {
 
    /* public User getUserbyloginname(String loginname)
     {
-        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
+        EntityManagerFactory entityManagerFactory =EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         User user = null;
@@ -74,7 +74,7 @@ public class UserRepository {
 
     public void delUser(String loginname)
     {
-        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
+        EntityManagerFactory entityManagerFactory =EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         User user = null;
@@ -102,9 +102,7 @@ public class UserRepository {
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-           // user = (List<User>) entityManager.createQuery("SELECT a FROM User a");
            user = entityManager.createQuery("from User",User.class).getResultList();
-           entityManager.persist(user);
             entityManager.getTransaction().commit();
         }
         catch (RuntimeException e) {

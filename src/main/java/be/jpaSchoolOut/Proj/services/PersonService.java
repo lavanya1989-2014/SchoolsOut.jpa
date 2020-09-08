@@ -30,8 +30,8 @@ public class PersonService {
         personRepository.delPerson(id);
     }
 
-    /*public List<Person> getAllPersons()
+    public List<Person> getAllPersons()
     {
         return personRepository.getAllPersons();
-    }*/
+    }
 }

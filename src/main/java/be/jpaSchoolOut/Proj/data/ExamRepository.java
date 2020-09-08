@@ -113,5 +113,24 @@ public class ExamRepository {
         return exams;
     }*/
 
+    public List<Exam> getSubExams (long id) {
+        EntityManagerFactory entityManagerFactory =EntityFactory.getConnection();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        List<Exam> exams = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            exams = (List<Exam>) entityManager.createQuery("Select e from e WHERE id =" + id,Exam.class).getResultList();
+            entityManager.getTransaction().commit();
+        }
+        catch (RuntimeException e) {
+            if(entityTransaction.isActive())
+                entityTransaction.rollback();
+            throw e;
+        }
+        return exams;
+
+        }
 
 }

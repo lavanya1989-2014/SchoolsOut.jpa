@@ -36,7 +36,7 @@ public class ExamService {
         return examRepository.getAllExams();
     }*/
 
-   /*  public void outputExam(long id) {
-        examRepository.
+  /* public void outputExam(long id) {
+        examRepository.getSubExams(id).forEach(exam1 -> System.out.println());
     }*/
 }

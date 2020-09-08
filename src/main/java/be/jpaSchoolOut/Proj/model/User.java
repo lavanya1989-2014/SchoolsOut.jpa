@@ -10,8 +10,7 @@ public class User {
     private String passwaordhash;
     private boolean active;
 
-    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER,targetEntity = Person.class)
-    @JoinColumn(name = "personid_FK")
+    @OneToOne(fetch = FetchType.EAGER,targetEntity = Person.class,cascade = CascadeType.PERSIST)
     private Person person;
 
     public String getLogin() {
@@ -53,7 +52,6 @@ public class User {
                 "login='" + login + '\'' +
                 ", passwaordhash='" + passwaordhash + '\'' +
                 ", active=" + active +
-                ", person=" + person +
-                '}';
+                ", person=" + person + '}' +'\n';
     }
 }

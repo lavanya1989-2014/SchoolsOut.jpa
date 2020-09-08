@@ -33,7 +33,7 @@ public class GradeRepository {
     public void updateGrade(Grade grade)
     {
 
-        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
+        EntityManagerFactory entityManagerFactory =EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
@@ -53,7 +53,7 @@ public class GradeRepository {
 
     /*public Grade getGradebyId(long id)
     {
-        EntityManagerFactory entityManagerFactory = EntityFactory.getConnection();
+        EntityManagerFactory entityManagerFactory =EntityFactory.getConnection();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = null;
         Grade grade = null;

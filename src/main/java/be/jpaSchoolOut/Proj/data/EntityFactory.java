@@ -5,8 +5,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class EntityFactory {
+    private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("Success");
 
     public static EntityManagerFactory getConnection() {
-        return Persistence.createEntityManagerFactory("Success");
+        return factory;
     }
 }
